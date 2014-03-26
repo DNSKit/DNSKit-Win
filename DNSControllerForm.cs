@@ -23,6 +23,7 @@ namespace DNSKit_Controller
         public IPAddress subnet;
         public IPAddress gateway;
         public string[] cur_dns;
+        public bool minimizedYet = false;
 
         public JObject GetAll;
 
@@ -136,6 +137,33 @@ namespace DNSKit_Controller
 
             selectDNS.SelectedIndex = random.Next(selectDNS.Items.Count);
             useSelected.PerformClick();
+        }
+
+        private void DNSKit_Controller_Resize(object sender, EventArgs e)
+        {
+            DNSKit.BalloonTipTitle = "DNSKit minimized";
+            DNSKit.BalloonTipText = "The application is minimized to the tray!";
+
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                DNSKit.Visible = true;
+                if(minimizedYet == false)
+                {
+                    DNSKit.ShowBalloonTip(500);
+                }
+                this.Hide();
+                minimizedYet = true;
+            }
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                DNSKit.Visible = false;
+            }
+        }
+
+        private void DNSKit_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }

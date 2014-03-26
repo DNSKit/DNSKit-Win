@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DNSKit_Controller));
             this.mainName = new System.Windows.Forms.Label();
             this.dnsList = new System.Windows.Forms.Label();
@@ -36,6 +37,7 @@
             this.disableBtn = new System.Windows.Forms.Button();
             this.randBtn = new System.Windows.Forms.Button();
             this.logoBg = new System.Windows.Forms.PictureBox();
+            this.DNSKit = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.logoBg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,6 +108,13 @@
             this.logoBg.TabIndex = 10;
             this.logoBg.TabStop = false;
             // 
+            // DNSKit
+            // 
+            this.DNSKit.Icon = ((System.Drawing.Icon)(resources.GetObject("DNSKit.Icon")));
+            this.DNSKit.Text = "DNSKit";
+            this.DNSKit.Visible = true;
+            this.DNSKit.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DNSKit_MouseDoubleClick);
+            // 
             // DNSKit_Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,6 +134,7 @@
             this.Text = "DNSKit";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DNSKit_Controller_FormClosing);
             this.Load += new System.EventHandler(this.DNSKit_Controller_Load);
+            this.Resize += new System.EventHandler(this.DNSKit_Controller_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.logoBg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -140,6 +150,7 @@
         private System.Windows.Forms.Button disableBtn;
         private System.Windows.Forms.Button randBtn;
         private System.Windows.Forms.PictureBox logoBg;
+        private System.Windows.Forms.NotifyIcon DNSKit;
     }
 }
 
